@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Calculus Study Plan · May 13–19</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F4EE;
+    --surface: #FFFFFF;
+    --ink: #1A1814;
+    --ink-2: #6B6760;
+    --ink-3: #B0ADA8;
+    --accent: #1A1814;
+    --rule: rgba(26,24,20,0.12);
+
+    --d1: #3D2F8F;
+    --d1-bg: #EEEDFB;
+    --d2: #0A6B4F;
+    --d2-bg: #E3F4EE;
+    --d3: #1756A0;
+    --d3-bg: #E4EFF9;
+    --d4: #8C4A00;
+    --d4-bg: #FBF0E0;
+    --d5: #922E10;
+    --d5-bg: #FAECE7;
+    --d6: #8C2449;
+    --d6-bg: #FAEAF0;
+    --d7: #3A3A3A;
+    --d7-bg: #EFEFED;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 3rem;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 1.5rem;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--ink-2);
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-2);
+    letter-spacing: 0.06em;
+  }
+
+  .global-progress-wrap {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .gp-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-2);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .gp-track {
+    flex: 1;
+    height: 4px;
+    background: var(--bg);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .gp-fill {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 99px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+
+  .gp-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .day-card:hover { box-shadow: 0 2px 16px rgba(26,24,20,0.07); }
+
+  .day-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 1.25rem 0.85rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .day-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 6px;
+  }
+
+  .day-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .day-theme {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  .day-files {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .file-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    border-bottom: 0.5px solid transparent;
+  }
+
+  .file-row:last-child { border-bottom: none; }
+
+  .file-row input[type=checkbox] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--ink-3);
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+    position: relative;
+  }
+
+  .file-row input[type=checkbox]:checked {
+    border-color: var(--day-color);
+    background: var(--day-color);
+  }
+
+  .file-row input[type=checkbox]:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px; top: 0px;
+    width: 5px; height: 9px;
+    border: 2px solid white;
+    border-top: none; border-left: none;
+    transform: rotate(42deg);
+  }
+
+  .file-label {
+    font-size: 13px;
+    color: var(--ink-2);
+    transition: color 0.2s, text-decoration 0.2s;
+    line-height: 1.4;
+    cursor: pointer;
+    border-bottom: 1px dashed transparent;
+    padding-bottom: 1px;
+  }
+  .file-label:hover {
+    color: var(--day-color, var(--ink));
+    border-bottom-color: currentColor;
+  }
+
+  .file-row.done .file-label {
+    color: var(--ink-3);
+    text-decoration: line-through;
+    text-decoration-color: var(--ink-3);
+  }
+
+  .day-footer {
+    padding: 0.6rem 1.25rem 0.85rem;
+  }
+
+  .day-track {
+    height: 3px;
+    background: var(--bg);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .day-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+
+  /* Review card */
+  .review-card {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: white;
+  }
+
+  .review-card .day-header {
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+
+  .review-card .day-date { color: white; }
+  .review-card .day-theme { color: rgba(255,255,255,0.5); }
+  .review-card .day-num {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.8);
+  }
+
+  .review-body {
+    padding: 1rem 1.25rem;
+  }
+
+  .review-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .review-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    border: 0.5px solid rgba(255,255,255,0.15);
+  }
+
+  .final-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink-2);
+  }
+
+  /* ── Side-by-side PDF viewer ── */
+  .viewer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,24,20,0.85);
+    z-index: 200;
+    flex-direction: column;
+    padding: 0;
+  }
+  .viewer-overlay.open { display: flex; }
+
+  .viewer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.4rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    flex-shrink: 0;
+    gap: 1rem;
+  }
+
+  .viewer-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 0.15rem;
+  }
+
+  .viewer-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .viewer-close {
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s;
+  }
+  .viewer-close:hover { background: var(--bg); color: var(--ink); }
+
+  .viewer-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .viewer-pane {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    overflow: hidden;
+  }
+
+  .viewer-pane-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding: 8px 14px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .viewer-pane-label .pane-filename {
+    color: var(--ink-3);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 10.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60%;
+  }
+
+  .viewer-frame {
+    flex: 1;
+    width: 100%;
+    border: none;
+    background: #f0eee9;
+    min-height: 0;
+  }
+
+  .viewer-missing {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    color: var(--ink-2);
+    font-size: 13px;
+    background: var(--bg);
+  }
+  .viewer-missing strong {
+    display: block;
+    color: var(--ink);
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  .viewer-missing small {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  /* Stack on narrow screens */
+  @media (max-width: 820px) {
+    .viewer-body {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <p class="eyebrow">Study Schedule · Final on May 20</p>
+    <h1>Pre-Calculus<br><em>7-Day Plan</em></h1>
+    <div class="header-meta">
+      <span class="meta-pill">May 13 → May 19</span>
+      <span class="meta-pill">35 exercise files</span>
+      <span class="meta-pill">6 study days + 1 review</span>
+      <span class="meta-pill" style="color:var(--ink);">Click any module to view PDFs</span>
+    </div>
+  </header>
+
+  <div class="global-progress-wrap">
+    <span class="gp-label">Progress</span>
+    <div class="gp-track"><div class="gp-fill" id="gp-fill"></div></div>
+    <span class="gp-count" id="gp-count">0 / 35</span>
+    <span class="gp-count" id="gp-pct" style="color:var(--ink-3);">0%</span>
+  </div>
+
+  <div id="days"></div>
+
+  <div class="day-card review-card">
+    <div class="day-header">
+      <span class="day-num" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">Day 7</span>
+      <span class="day-date">Tue, May 19</span>
+      <span class="day-theme">Broad review day</span>
+    </div>
+    <div class="review-body">
+      <p class="review-note">Revisit weak spots, redo missed problems, and run through your formula sheet before tomorrow's final.</p>
+      <div class="review-chips">
+        <span class="chip">Ch. 0.3 &amp; 1 basics</span>
+        <span class="chip">Ch. 2 &amp; 3 concepts</span>
+        <span class="chip">Sections 3–4 key problems</span>
+        <span class="chip">Sections 5–6 techniques</span>
+        <span class="chip">Sections 7–8 patterns</span>
+        <span class="chip">Ch. 9–10 wrap-up</span>
+        <span class="chip">Hardest missed problems</span>
+        <span class="chip">Formula sheet review</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="final-note">Good luck on May 20 ✦</p>
+
+</div>
+
+<!-- Side-by-side PDF Viewer -->
+<div class="viewer-overlay" id="viewer-overlay">
+  <div class="viewer-header">
+    <div>
+      <p class="viewer-eyebrow" id="viewer-eyebrow">Side-by-side</p>
+      <h2 class="viewer-title" id="viewer-title">…</h2>
+    </div>
+    <button class="viewer-close" id="viewer-close" aria-label="Close viewer">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      Close
+    </button>
+  </div>
+  <div class="viewer-body">
+    <div class="viewer-pane">
+      <div class="viewer-pane-label">
+        <span>Exercises</span>
+        <span class="pane-filename" id="viewer-ex-filename"></span>
+      </div>
+      <iframe class="viewer-frame" id="viewer-ex" title="Exercises PDF"></iframe>
+      <div class="viewer-missing" id="viewer-ex-missing" style="display:none;">
+        <strong>No exercises PDF found</strong>
+        Place a <code>precalc_exercises/</code> folder next to this HTML file (or edit <code>PDF_FOLDER</code> in the script).
+      </div>
+    </div>
+    <div class="viewer-pane">
+      <div class="viewer-pane-label">
+        <span>Solutions</span>
+        <span class="pane-filename" id="viewer-sol-filename"></span>
+      </div>
+      <iframe class="viewer-frame" id="viewer-sol" title="Solutions PDF"></iframe>
+      <div class="viewer-missing" id="viewer-sol-missing" style="display:none;">
+        <strong>Solutions not posted</strong>
+        The instructor hasn't uploaded a solutions PDF for this section yet.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const days = [
+  { num:"Day 1", date:"Wed, May 13", theme:"Foundation & Chapter 1", color:"#3D2F8F", bg:"#EEEDFB",
+    files:["Chapter 0.3 Exercise and Solutions Files","Section 1.1.4 Exercise and Solutions Files","Section 1.2.3 Exercise and Solutions Files","Section 1.3 Exercises and Solution Files","Section 1.4 Exercise and Solutions Files","Section 1.5 Exercise and Solutions Files"] },
+  { num:"Day 2", date:"Thu, May 14", theme:"Chapters 2–3", color:"#0A6B4F", bg:"#E3F4EE",
+    files:["Chapter 2.6 Exercise and Solution Files","Chapter 3 Extension Exercise and Solutions Files","Section 3.2.3 Exercise and Solutions Files","Section 3.5.4 Exercise and Solutions Files","Section 3.7.3 Exercise and Solution Files","Section 3.8.3 Exercise and Solutions Files"] },
+  { num:"Day 3", date:"Fri, May 15", theme:"Chapters 4–5 (part 1)", color:"#1756A0", bg:"#E4EFF9",
+    files:["Section 4.1.4 Exercise and Solutions Files","Section 4.3.3 Exercise and Solution Files","Section 4.5.3 Exercise and Solutions Files","Section 4.6.3 Exercise and Solutions Files","Section 5.1 Exercise and Solutions Files","Section 5.2.4 Exercise and Solutions Files"] },
+  { num:"Day 4", date:"Sat, May 16", theme:"Chapters 5–7 (start)", color:"#8C4A00", bg:"#FBF0E0",
+    files:["Section 5.4.4 Exercise and Solutions Files","Section 6.1.4 Exercise and Solutions Files","Section 6.2.3 Exercise and Solutions Files","Section 6.3.4 Exercises and Solutions Files","Section 7.1.3 Exercises and Solutions Files"] },
+  { num:"Day 5", date:"Sun, May 17", theme:"Chapters 7–8", color:"#922E10", bg:"#FAECE7",
+    files:["Section 7.2.5 Exercise and Solutions Files","Section 7.3.4 Exercise and Solutions Files","Section 7.4.3 Exercise and Solutions Files","Section 8.1.3 Exercise and Solutions Files","Section 8.2.3 Exercise and Solutions Files","Section 8.3.4 Exercise and Solutions Files"] },
+  { num:"Day 6", date:"Mon, May 18", theme:"Chapters 8–10", color:"#8C2449", bg:"#FAEAF0",
+    files:["Section 8.4.2 Exercise and Solutions Files","Section 9.1.3 Exercise and Solutions Files","Section 9.3.2 Exercise and Solutions Files","Section 10.1.3 Exercise and Solutions Files","Section 10.2.3 Exercise and Solutions Files","Section 10.3.3 Exercise and Solutions Files"] }
+];
+
+// Maps study-plan file titles to the actual PDF filenames in ../precalc_exercises/.
+// `sol: null` means no solutions PDF was posted by the instructor yet.
+// Drop a `precalc_exercises/` folder next to this file with the section PDFs.
+const PDF_FOLDER = "./precalc_exercises/";
+const pdfMap = {
+  "Chapter 0.3 Exercise and Solutions Files":              { ex: "Chapter 0 Exercises.pdf",                                                 sol: "Chapter 0 Exercises Answers.pdf" },
+  "Section 1.1.4 Exercise and Solutions Files":            { ex: "Section 1.1 Exercises.pdf",                                               sol: "Section 1.1 Exercises Answers.pdf" },
+  "Section 1.2.3 Exercise and Solutions Files":            { ex: "Section 1.2 Exercises.pdf",                                               sol: "Section 1.2 Exercises Answers.pdf" },
+  "Section 1.3 Exercises and Solution Files":              { ex: "Section 1.3 Exercises.pdf",                                               sol: "Section 1.3 Exercises Answers.pdf" },
+  "Section 1.4 Exercise and Solutions Files":              { ex: "Section 1.4 Exercises.pdf",                                               sol: "Section 1.4 Exercises Answers.pdf" },
+  "Section 1.5 Exercise and Solutions Files":              { ex: "Section 1.5 Exercises.pdf",                                               sol: "Section 1.5 Exercises Answers.pdf" },
+  "Chapter 2.6 Exercise and Solution Files":               { ex: "Chapter 2 Exercises.pdf",                                                 sol: "Chapter 2 Exercises Answers.pdf" },
+  "Chapter 3 Extension Exercise and Solutions Files":      { ex: "Chapter 3 Extension Polynomial and Rational Inequalities Exercises.pdf", sol: "Chapter 3 Extension Polynomial and Rational Inequalities Exercises Answers.pdf" },
+  "Section 3.2.3 Exercise and Solutions Files":            { ex: "Section 3.2 Exercises.pdf",                                               sol: "Section 3.2 Exercises Answers.pdf" },
+  "Section 3.5.4 Exercise and Solutions Files":            { ex: "Section 3.5 - 3.6 Exercises.pdf",                                         sol: "Section 3.5 - 3.6 Exercises Answers.pdf" },
+  "Section 3.7.3 Exercise and Solution Files":             { ex: "Section 3.7 Exercises-1.pdf",                                             sol: "Section 3.7 Exercises Answers.pdf" },
+  "Section 3.8.3 Exercise and Solutions Files":            { ex: "Section 3.8 Exercises.pdf",                                               sol: "Section 3.8 Exercises Answers.pdf" },
+  "Section 4.1.4 Exercise and Solutions Files":            { ex: "Section 4.1 - 4.2 Exercises.pdf",                                         sol: "Section 4.1 - 4.2 Exercises Answers.pdf" },
+  "Section 4.3.3 Exercise and Solution Files":             { ex: "Section 4.3 - 4.4 Exercises.pdf",                                         sol: "Section 4.3 - 4.4 Exercises Answers.pdf" },
+  "Section 4.5.3 Exercise and Solutions Files":            { ex: "Section 4.5 Exercises.pdf",                                               sol: "Section 4.5 Exercises Answers.pdf" },
+  "Section 4.6.3 Exercise and Solutions Files":            { ex: "Section 4.6 Exercises.pdf",                                               sol: "Section 4.6 Exercises Answers.pdf" },
+  "Section 5.1 Exercise and Solutions Files":              { ex: "Section 5.1 Exercises.pdf",                                               sol: "Section 5.1 Exercises Answers.pdf" },
+  "Section 5.2.4 Exercise and Solutions Files":            { ex: "Section 5.2 - 5.3 Exercises.pdf",                                         sol: "Section 5.2 - 5.3 Exercises Answers.pdf" },
+  "Section 5.4.4 Exercise and Solutions Files":            { ex: "Section 5.4 Exercises.pdf",                                               sol: "Section 5.4 Exercises Answers.pdf" },
+  "Section 6.1.4 Exercise and Solutions Files":            { ex: "Section 6.1 Exercises.pdf",                                               sol: "Section 6.1 Exercises Answers.pdf" },
+  "Section 6.2.3 Exercise and Solutions Files":            { ex: "Section 6.2 Exercises.pdf",                                               sol: "Section 6.2 Exercises Answers.pdf" },
+  "Section 6.3.4 Exercises and Solutions Files":           { ex: "Section 6.3 Exercises.pdf",                                               sol: "Section 6.3 Exercises Answers.pdf" },
+  "Section 7.1.3 Exercises and Solutions Files":           { ex: "Section 7.1 Exercises.pdf",                                               sol: "Section 7.1 Exercises Answers.pdf" },
+  "Section 7.2.5 Exercise and Solutions Files":            { ex: "Section 7.2 Exercises.pdf",                                               sol: "Section 7.2 Exercises Answers.pdf" },
+  "Section 7.3.4 Exercise and Solutions Files":            { ex: "Section 7.3 Exercises.pdf",                                               sol: "Section 7.3 Exercises Answers.pdf" },
+  "Section 7.4.3 Exercise and Solutions Files":            { ex: "Section 7.4 Exercises.pdf",                                               sol: "Section 7.4 Exercises Answers.pdf" },
+  "Section 8.1.3 Exercise and Solutions Files":            { ex: "Section 8.1 Exercises.pdf",                                               sol: "Section 8.1 Exercises Answers.pdf" },
+  "Section 8.2.3 Exercise and Solutions Files":            { ex: "Section 8.2 Exercises.pdf",                                               sol: "Section 8.2 Exercises Answers.pdf" },
+  "Section 8.3.4 Exercise and Solutions Files":            { ex: "Section 8.3 Exercises.pdf",                                               sol: "Section 8.3 Exercises Answers.pdf" },
+  "Section 8.4.2 Exercise and Solutions Files":            { ex: "Section 8.4 Exercises.pdf",                                               sol: "Section 8.4 Exercises Answers.pdf" },
+  "Section 9.1.3 Exercise and Solutions Files":            { ex: "Section 9.1 Exercises.pdf",                                               sol: null },
+  "Section 9.3.2 Exercise and Solutions Files":            { ex: "Section 9.3 Exercises.pdf",                                               sol: null },
+  "Section 10.1.3 Exercise and Solutions Files":           { ex: "Section 10.1 Exercises.pdf",                                              sol: "Section 10.1 Exercise Answers.pdf" },
+  "Section 10.2.3 Exercise and Solutions Files":           { ex: "Section 10.2 Exercises.pdf",                                              sol: null },
+  "Section 10.3.3 Exercise and Solutions Files":           { ex: "Section 10.3 Exercises.pdf",                                              sol: null }
+};
+
+// Each viewer of the shared file gets their own progress bar in their own browser.
+// Nothing is sent anywhere — purely local to the recipient's device.
+const STORAGE_KEY = "precalc_shared_v1";
+let checked = {};
+try { checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e){}
+
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(checked)); } catch(e){}
+}
+
+function updateGlobal() {
+  const total = days.reduce((s,d) => s + d.files.length, 0);
+  const done = Object.values(checked).filter(Boolean).length;
+  document.getElementById("gp-fill").style.width = (done/total*100) + "%";
+  document.getElementById("gp-count").textContent = done + " / " + total;
+  document.getElementById("gp-pct").textContent = Math.round(done/total*100) + "%";
+}
+
+/* ── Side-by-side viewer ── */
+const viewerOverlay   = document.getElementById("viewer-overlay");
+const viewerTitle     = document.getElementById("viewer-title");
+const viewerEyebrow   = document.getElementById("viewer-eyebrow");
+const viewerEx        = document.getElementById("viewer-ex");
+const viewerSol       = document.getElementById("viewer-sol");
+const viewerExName    = document.getElementById("viewer-ex-filename");
+const viewerSolName   = document.getElementById("viewer-sol-filename");
+const viewerExMissing = document.getElementById("viewer-ex-missing");
+const viewerSolMissing= document.getElementById("viewer-sol-missing");
+
+function openViewer(fileKey, dayTheme) {
+  const m = pdfMap[fileKey];
+  viewerTitle.textContent = fileKey;
+  viewerEyebrow.textContent = dayTheme ? ("Side-by-side · " + dayTheme) : "Side-by-side";
+
+  // Exercises pane
+  if (m && m.ex) {
+    viewerEx.src = PDF_FOLDER + encodeURIComponent(m.ex) + "#toolbar=1&view=FitH";
+    viewerEx.style.display = "";
+    viewerExMissing.style.display = "none";
+    viewerExName.textContent = m.ex;
+  } else {
+    viewerEx.removeAttribute("src");
+    viewerEx.style.display = "none";
+    viewerExMissing.style.display = "flex";
+    viewerExName.textContent = "—";
+  }
+
+  // Solutions pane
+  if (m && m.sol) {
+    viewerSol.src = PDF_FOLDER + encodeURIComponent(m.sol) + "#toolbar=1&view=FitH";
+    viewerSol.style.display = "";
+    viewerSolMissing.style.display = "none";
+    viewerSolName.textContent = m.sol;
+  } else {
+    viewerSol.removeAttribute("src");
+    viewerSol.style.display = "none";
+    viewerSolMissing.style.display = "flex";
+    viewerSolName.textContent = "—";
+  }
+
+  viewerOverlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeViewer() {
+  viewerOverlay.classList.remove("open");
+  viewerEx.removeAttribute("src");
+  viewerSol.removeAttribute("src");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("viewer-close").addEventListener("click", closeViewer);
+viewerOverlay.addEventListener("click", e => { if (e.target === viewerOverlay) closeViewer(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && viewerOverlay.classList.contains("open")) closeViewer(); });
+
+/* ── Build day cards ── */
+const container = document.getElementById("days");
+
+days.forEach(day => {
+  const card = document.createElement("div");
+  card.className = "day-card";
+  card.style.setProperty("--day-color", day.color);
+
+  const header = document.createElement("div");
+  header.className = "day-header";
+  header.innerHTML = `
+    <span class="day-num" style="background:${day.bg};color:${day.color};">${day.num}</span>
+    <span class="day-date">${day.date}</span>
+    <span class="day-theme">${day.theme}</span>
+  `;
+
+  const filesDiv = document.createElement("div");
+  filesDiv.className = "day-files";
+
+  const footer = document.createElement("div");
+  footer.className = "day-footer";
+  const track = document.createElement("div");
+  track.className = "day-track";
+  const fill = document.createElement("div");
+  fill.className = "day-fill";
+  fill.style.background = day.color;
+  track.appendChild(fill);
+  footer.appendChild(track);
+
+  function updateDay() {
+    const done = day.files.filter(f => checked[f]).length;
+    fill.style.width = (done / day.files.length * 100) + "%";
+    updateGlobal();
+  }
+
+  day.files.forEach(file => {
+    const row = document.createElement("div");
+    row.className = "file-row" + (checked[file] ? " done" : "");
+    row.style.setProperty("--day-color", day.color);
+
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.checked = !!checked[file];
+
+    const lbl = document.createElement("span");
+    lbl.className = "file-label";
+    lbl.textContent = file;
+    lbl.title = "Click to view exercise & solutions side by side";
+    lbl.addEventListener("click", e => {
+      e.stopPropagation();
+      openViewer(file, day.theme);
+    });
+
+    cb.addEventListener("change", () => {
+      checked[file] = cb.checked;
+      if (cb.checked) row.classList.add("done");
+      else row.classList.remove("done");
+      save();
+      updateDay();
+    });
+
+    row.append(cb, lbl);
+    filesDiv.appendChild(row);
+  });
+
+  card.append(header, filesDiv, footer);
+  container.appendChild(card);
+  updateDay();
+});
+
+updateGlobal();
+</script>
+</body>
+</html>
